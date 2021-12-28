@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Detail</title>
+  </head>
+  <body>
+    <h1>{{ lunch.lunch }}</h1>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'lunch_app/style.css' %}">
+
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    
+    <form action="{% url 'lunch_app:vote' lunch.id %}" method="post">
+    {% csrf_token %}
+    {% for choice in lunch.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice }}</label><br>
+    {% endfor %}
+    <br/>
+    <input type="submit" value="Vote">
+    </form>
+  </body>
+</html>

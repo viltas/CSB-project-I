@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Results</title>
+  </head>
+  <body>
+    <h1>{{ lunch.lunch_text }}</h1>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'lunch_app/style.css' %}">
+
+
+<ul style="list-style: none;">
+{% for choice in lunch.choice_set.all %}
+    <li>{{ choice.choice }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+<br/>
+<a href="{% url 'lunch_app:index' %}">Home</a>
+  </body>
+</html>
