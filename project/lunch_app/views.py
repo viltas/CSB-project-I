@@ -6,6 +6,7 @@ from django.urls import reverse
 from .models import Lunch, Choice
 from django.views import generic
 from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
 
 class IndexView(generic.ListView):
     template_name = 'lunch_app/index.html'
@@ -24,6 +25,7 @@ class ResultsView(generic.DetailView):
     model = Lunch
     template_name = 'lunch_app/results.html'
 
+@csrf_exempt
 def vote(request, lunch_id):
     lunch = get_object_or_404(Lunch, pk=lunch_id)
     try:
