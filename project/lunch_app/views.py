@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
     context_object_name = 'next_lunch'
 
     def get_queryset(self):
-        return Lunch.objects.filter(date__day=timezone.now().day)
+        return Lunch.objects.filter(date=timezone.now())
 
 
 class DetailView(generic.DetailView):
