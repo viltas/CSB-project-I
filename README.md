@@ -25,8 +25,7 @@ https://github.com/viltas/CSB-project-I/blob/d4935ec83fd2d756c49c7eb4bf20b45c383
 Currently user accounts and logging in are used for administration purposes only, but the security of the admin account is very weak. The software accepts very weak passwords, and currently the administrator password is the same as the username (admin / admin). The application allows dangerously short and popular passwords. Therefore, it would be very easy for an attacker to guess the administrator's password and access the maintenance panel to view and edit the information intended to be secret.
 
 Django offers options to improve the strength of your passwords:  
-https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password
-validators
+https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
  By re-enabling AUTH_PASSWORD_VALIDATORS = [...] in setting.py file, the application will use those password validators again. Then the application will notify the user if they are choosing a password that is too weak.
 
 
